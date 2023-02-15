@@ -81,3 +81,16 @@ ssh banner@stapp03
 sudo useradd john
 sudo chage -l john
 sudo chage -E 2021-04-15 john
+
+7.Linux User Without Home
+The system admins team of xFusionCorp Industries has set up a new tool on all app servers, as they have a requirement
+to create a service user account that will be used by that tool. They are finished with all apps except for App Server 2 in Stratos Datacenter.
+Create a user named jim in App Server 2 without a home directory.
+
+Solution:
+ssh steve@stapp02
+enter the password corresponding to steve
+sudo su (to change to root)
+useradd -M jim
+ll
+id jim
