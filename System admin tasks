@@ -94,3 +94,20 @@ sudo su (to change to root)
 useradd -M jim
 ll
 id jim
+
+8.Linux Services
+As per details shared by the development team, the new application release has some dependencies on the back end.
+There are some packages/services that need to be installed on all app servers under Stratos Datacenter. As per requirements please perform the following steps:
+a. Install cups package on all the application servers.
+b. Once installed, make sure it is enabled to start during boot.
+
+Solution:
+ssh tony@stapp01
+enter the password
+sudo su -
+yum install cups -y
+systemctl status cups
+systemctl start cups
+systemctl enable cups
+systemctl status cups
+This needs to be done on all 3 app servers
