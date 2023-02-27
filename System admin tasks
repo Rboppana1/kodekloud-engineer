@@ -111,3 +111,28 @@ systemctl start cups
 systemctl enable cups
 systemctl status cups
 This needs to be done on all 3 app servers
+
+9.Linux Banner
+During the monthly compliance meeting, it was pointed out that several servers in the Stratos DC do not have a valid banner.
+The security team has provided serveral approved templates which should be applied to the servers to maintain compliance. These will be displayed to the user upon a successful login.
+Update the message of the day on all application and db servers for Nautilus. Make use of the approved template located at /home/thor/nautilus_banner on jump host
+
+Solution:
+ssh tony@stapp01
+sudo su -
+on new terminal - copy the file from jump host to stapp01 using below command
+scp /home/thor/nautilus_banner tony@stapp01
+scp /home/thor/nautilus_banner tony@stapp01:/tmp
+then overwrite the /etc/motd file - that is banner in centos on stapp01
+cp /tmp/nautilus_banner /etc/motd
+confirm the overwrite
+cat /etc/motd
+logout and log back into ssh01 and check if the banner  is getting displayed
+ssh tony@stapp01
+do this all db servers and app servers.
+on db server - do below
+sudo yum install openssh-clients
+and continue with other steps, on the db server to complete the task
+
+
+
