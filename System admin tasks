@@ -153,5 +153,22 @@ systemctl set-default graphical.target
 systemctl get.default
 Perform above steps on all app servers
 
+11.Linux user files
+There was some users data copied on Nautilus App Server 3 at /home/usersdata location by the Nautilus production support team in Stratos DC.
+Later they found that they mistakenly mixed up different user data there. Now they want to filter out some user data and copy it to another location. Find the details below:
+On App Server 3 find all files (not directories) owned by user kareem inside /home/usersdata directory and copy them all while keeping the folder structure
+(preserve the directories path) to /blog directory.
+
+Solution:
+ssh banner@stapp03
+enter the password relevant to banner
+then
+sudo su -
+cd /home/usersdata/
+find . -user kareem
+find . -user kareem | cpio -pdm /blog
+cd /blog/
+ls
+
 
 
