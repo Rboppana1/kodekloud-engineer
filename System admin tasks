@@ -170,5 +170,23 @@ find . -user kareem | cpio -pdm /blog
 cd /blog/
 ls
 
+12.Linux Postfix Troubleshooting
+Some users of the monitoring app have reported issues with xFusionCorp Industries mail server.
+They have a mail server in Stork DC where they are using postfix mail transfer agent. Postfix service seems to fail.
+Try to identify the root cause and fix it.
+
+Solution:
+ssh groot@stmail01
+sudo su -
+systemctl status postfix
+systemctl status postfix -l
+cat /etc/postfix/main.cf | grep inet_interface
+vi /ect/postfix/main.cf - and comment inet_interface localhost
+cat /etc/postfix/main.cf | grep inet_interface
+systemctl start postfix
+systemctl status postfix
+telnet localhost 25
+
+
 
 
