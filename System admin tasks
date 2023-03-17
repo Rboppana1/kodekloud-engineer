@@ -201,4 +201,19 @@ add nameserver 8.8.8.8 to the file
 cat /etc/resolv.conf
 ping google.com
 
+14.Disable Root Login
+After doing some security audits of servers, xFusionCorp Industries security team has implemented some new security policies.
+One of them is to disable direct root login through SSH.
+Disable direct SSH root login on all app servers in Stratos Datacenter.
+
+Solution:
+ssh tony@stapp01
+enter password for tony
+sudo su -
+systemctl status sshd
+vi /etc/ssh/sshd_config
+change permission root login from 'yes' to 'no'
+cat /etc/ssh/sshd_config | grep permit
+systemctl restart sshd
+systemctl status sshd
 
